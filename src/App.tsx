@@ -14,25 +14,31 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Dialog,
+  DialogTitle,
+  DialogContent,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import saruInSyncLogo from "./assets/saru-in-sync-name-logo.png";
 import saruImage from "./assets/Saru.jpg";
+import sessionImage from "./assets/session-logo.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+
+
 
 // ---------- Sections Info ----------
 const sections = [
   { id: "home", label: "Home" },
   { id: "what", label: "What I do" },
   { id: "how", label: "How it works" },
-  { id: "book", label: "Book" },
 ];
 
 // ---------- Navbar ----------
 function Navbar() {
   const [active, setActive] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   const handleScroll = () => {
     const scrollPos = window.scrollY + window.innerHeight / 3;
@@ -40,7 +46,6 @@ function Navbar() {
       const el = document.getElementById(sec.id);
       if (el && scrollPos >= el.offsetTop) setActive(sec.id);
     }
-    setScrolled(window.scrollY > 50);
   };
 
   useEffect(() => {
@@ -57,13 +62,49 @@ function Navbar() {
     <>
       <AppBar
         position="sticky"
-        elevation={scrolled ? 4 : 0}
+        elevation={0} // no shadow
         sx={{
-          background: "#EFEBEA",
+          background: "rgba(0, 31, 63, 0.95)",
           transition: "background 0.4s ease",
         }}
       >
-        <Toolbar sx={{ justifyContent: "space-between", px: { xs: 2, md: 6 } }}>
+        <Toolbar
+          sx={{
+            justifyContent: "space-between",
+            px: { xs: 3, md: 8 }, // more horizontal padding
+            minHeight: { xs: 80, md: 100 }, // increase height for all viewports
+          }}
+        >
+          {/* Desktop nav */}
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
+            {sections.map((sec) => (
+              <Button
+                key={sec.id}
+                onClick={() => scrollTo(sec.id)}
+                sx={{
+                  borderRadius: 7,
+                  border: active === sec.id ? "1px solid #ffffffff" : "none",
+                  color: "#ffffffff",
+                  fontWeight: 500,
+                  fontSize: "1.1rem", // slightly bigger text
+                  textTransform: "none",
+                  px: 3,
+                }}
+              >
+                {sec.label}
+              </Button>
+            ))}
+          </Box>
+
+          {/* Mobile nav */}
+          <IconButton
+            color="inherit"
+            sx={{ display: { md: "none" }, color: "#ffffffff" }}
+            onClick={() => setMobileOpen(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+
           {/* Logo */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <a
@@ -75,7 +116,7 @@ function Navbar() {
                 src={saruInSyncLogo}
                 alt="Logo"
                 style={{
-                  height: "40px",
+                  height: "50px", // slightly bigger logo
                   width: "auto",
                   cursor: "pointer",
                 }}
@@ -83,40 +124,11 @@ function Navbar() {
             </a>
           </Box>
 
-          {/* Desktop nav */}
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-            {sections.map((sec) => (
-              <Button
-                key={sec.id}
-                onClick={() => scrollTo(sec.id)}
-                sx={{
-                  borderRadius: 7,
-                  border: active === sec.id ? "1px solid #011845" : "none",
-                  color: "#011845",
-                  fontWeight: 500,
-                  fontSize: "1rem",
-                  textTransform: "none",
-                  px: 2,
-                }}
-              >
-                {sec.label}
-              </Button>
-            ))}
-          </Box>
-
-          {/* Mobile nav */}
-          <IconButton
-            color="inherit"
-            sx={{ display: { md: "none" } }}
-            onClick={() => setMobileOpen(true)}
-          >
-            <MenuIcon />
-          </IconButton>
         </Toolbar>
       </AppBar>
 
       <Drawer
-        anchor="right"
+        anchor="left"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         PaperProps={{
@@ -136,7 +148,7 @@ function Navbar() {
                     setMobileOpen(false);
                   }}
                   sx={{
-                    borderLeft: active === sec.id ? "4px solid #011845" : "none",
+                    borderRight: active === sec.id ? "2px solid #011845" : "none",
                     color: "inherit",
                   }}
                 >
@@ -174,13 +186,26 @@ function Hero() {
             variant="h2"
             gutterBottom
             sx={{
-              fontSize: { xs: "1.8rem", md: "3.5rem" },
+              fontSize: { xs: "2rem", md: "4rem" },
               fontFamily: "'DM Serif Display', serif",
               color: "#011845",
               fontWeight: 900,
             }}
           >
-            Connect With Saru — One-to-One Guidance That Actually Works
+            Connect With Saru
+          </Typography>
+
+          <Typography
+            variant="h5"
+            gutterBottom
+            sx={{
+              fontSize: { xs: "1.5rem", md: "2.5rem" },
+              fontFamily: "'DM Serif Display', serif",
+              color: "#011845",
+              fontWeight: 900,
+            }}
+          >
+            One-to-One Guidance That Actually Works
           </Typography>
 
           <Typography
@@ -192,7 +217,7 @@ function Hero() {
               color: "#011845",
             }}
           >
-            From studies and career to mindset, relationships, and self-growth —
+            From studies and career to mindset, motivation, and self-growth —
             I help you get clarity and confidence in life.
           </Typography>
 
@@ -211,7 +236,7 @@ function Hero() {
               width: { xs: "100%", sm: "auto" }, // full width on mobile
             }}
             onClick={() =>
-              document.getElementById("book")?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("how")?.scrollIntoView({ behavior: "smooth" })
             }
           >
             Book your session now — First 25 Get 25% Off!
@@ -229,18 +254,18 @@ function Hero() {
               textAlign: { xs: "center", md: "left" },
             }}
           >
-            <Box
-              component="img"
-              src={saruImage}
-              alt="Saru"
-              sx={{
-                width: { xs: 180, sm: 220, md: 350 },
-                height: { xs: 180, sm: 220, md: 350 },
-                borderRadius: "50%",
-                objectFit: "cover",
-                boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-              }}
-            />
+          <Box
+            component="img"
+            src={saruImage}
+            alt="Saru"
+            sx={{
+              width: { xs: 180, sm: 220, md: 350 },
+              height: { xs: 180, sm: 220, md: 350 },
+              borderRadius: "50%",
+              objectFit: "cover",
+              boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+            }}
+          />
 
             <Typography
               variant="h6"
@@ -251,12 +276,7 @@ function Hero() {
                 maxWidth: "600px",
               }}
             >
-              I’m Saru, creator of <b>Saru in sync</b>. Through my YouTube
-              channel and podcast, I share real, raw, and practical advice. Many
-              of you asked for personal guidance, so I started one-on-one
-              sessions. My mission is simple — to help you with clarity,
-              direction, and confidence in your studies, career, mindset, and
-              life.
+              I’m Saranya, creator of <b>Saru in sync</b> and an <b>IT Business Consultant</b> by profession. Through my YouTube channel and podcast, I share real, raw, and practical advice. Many of you asked for personal guidance, so I started one-to-one sessions. My mission is simple — to help you gain clarity, direction, and confidence in your studies, career, mindset, and life.
             </Typography>
           </Box>
         </motion.div>
@@ -375,40 +395,52 @@ function WhatIDo() {
   );
 }
 
-// ---------- How ----------
 function How() {
   return (
     <Section id="how" title="How It Works">
+      {/* Bullet Points */}
       <Box
-        component="ol"
+        component="ul"
         sx={{
           mt: 4,
           mx: "auto",
           fontSize: { xs: "1rem", md: "1.2rem" },
           textAlign: { xs: "left", md: "center" },
+          listStyleType: "disc",
           listStylePosition: "inside",
           maxWidth: "600px",
+          pl: { xs: 2, md: 0 },
         }}
       >
         <li>Fill the booking form with your details and purpose.</li>
         <li>Scan the QR code and pay via GPay/PhonePe.</li>
         <li>Upload the payment screenshot in the form.</li>
-        <li>We verify and send the meeting link by Email/WhatsApp.</li>
+        <li>We verify and send the meeting link by Email.</li>
       </Box>
-    </Section>
-  );
-}
 
-// ---------- Booking ----------
-function Booking() {
-  return (
-    <Section id="book" title="Book Your Session">
+      {/* Booking CTA */}
       <Typography
         gutterBottom
-        sx={{ maxWidth: 600, mx: "auto", fontSize: { xs: "1rem", md: "1.2rem" } }}
+        sx={{
+          mt: 4,
+          maxWidth: 600,
+          mx: "auto",
+          fontSize: { xs: "1rem", md: "1.2rem" },
+        }}
       >
         Click the button below to open the booking form and complete payment via
         UPI.
+      </Typography>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{
+          fontWeight: 600,
+          fontSize: { xs: "1rem", md: "1.3rem" },
+          color: "#011845",
+        }}
+      >
+        Book your session now — First 25 Get <span style={{ textDecoration: "line-through" }}>₹199</span> ₹149 (25% OFF)
       </Typography>
       <Button
         variant="contained"
@@ -431,19 +463,146 @@ function Booking() {
 
 // ---------- Footer ----------
 function Footer() {
+  const [openModal, setOpenModal] = useState<string | null>(null);
+
+  const handleOpen = (modal: string) => setOpenModal(modal);
+  const handleClose = () => setOpenModal(null);
+
   return (
     <Box
       sx={{
-        py: 2,
+        py: 4,
         textAlign: "center",
         color: "#fff",
         background: "rgba(0, 31, 63, 0.95)",
       }}
     >
+      <Box
+          component="img"
+          src={sessionImage}
+          alt="session"
+          sx={{
+            width: { xs: 180, sm: 220, md: 200 },
+            height: { xs: 180, sm: 220, md: 200 },
+            borderRadius: "50%",
+            objectFit: "cover",
+            boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+          }}
+        />
+
+      {/* Links */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+          gap: 3,
+          mb: 2,
+        }}
+      >
+        {["FAQs", "Terms", "About"].map((link) => (
+          <Button
+            key={link}
+            sx={{
+              color: "#fff",
+              fontSize: { xs: "0.8rem", md: "0.9rem" },
+              textTransform: "none",
+            }}
+            onClick={() => handleOpen(link)}
+          >
+            {link}
+          </Button>
+        ))}
+      </Box>
+
+      {/* Social Icons */}
+      <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2 }}>
+        <IconButton
+          href="https://www.instagram.com/saru_insync/"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ color: "#fff" }}
+        >
+          <InstagramIcon />
+        </IconButton>
+        <IconButton
+          href="https://www.youtube.com/@SaruInSync"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ color: "#fff" }}
+        >
+          <YouTubeIcon />
+        </IconButton>
+      </Box>
+
+      {/* Copyright */}
       <Typography variant="body2" sx={{ fontSize: { xs: "0.75rem", md: "0.9rem" } }}>
-        © {new Date().getFullYear()} Sync Guidance · Online guidance · Contact:
-        saruinsync@gmail.com
+        © {new Date().getFullYear()} Sync Guidance · Online guidance · Contact:{" "}
+        <a href="mailto:saruinsync.connect@gmail.com" style={{ color: "inherit" }}>
+          saruinsync.connect@gmail.com
+        </a>
       </Typography>
+
+      {/* Modal Dialog */}
+      <Dialog open={Boolean(openModal)} onClose={handleClose} maxWidth="sm" fullWidth>
+        <DialogTitle>{openModal}</DialogTitle>
+        <DialogContent dividers>
+          {openModal === "FAQs" && (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <Typography>
+                <b>What if I don’t know what to ask?</b><br />
+                👉 That’s okay! We’ll figure it out together.
+              </Typography>
+              <Typography>
+                <b>How long is a session?</b><br />
+                👉 Around 25–30 minutes.
+              </Typography>
+              <Typography>
+                <b>Will this really help me?</b><br />
+                👉 Yes, if you’re ready for honest and practical advice.
+              </Typography>
+              <Typography>
+                <b>Who are these sessions for?</b><br />
+                👉 Anyone feeling stuck in studies, career, mindset, or life direction, and looking for practical, honest guidance.
+              </Typography>
+            </Box>
+          )}
+
+          {openModal === "Terms" && (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <Typography>
+                <b>Purpose:</b> Sessions are intended for guidance, motivation, clarity, and personal growth only. They do not provide medical, therapy, or psychiatric treatment.
+              </Typography>
+              <Typography>
+                <b>Professional Advice:</b> If you are facing serious mental health issues, please consult a qualified healthcare professional.
+              </Typography>
+              <Typography>
+                <b>Payments:</b> Full payment is required at the time of booking. Refunds are not provided after the session.
+              </Typography>
+              <Typography>
+                <b>Cancellations / Rescheduling:</b> Sessions can be rescheduled at least 24 hours in advance. Late cancellations may not be refunded.
+              </Typography>
+              <Typography>
+                <b>Confidentiality:</b> All information shared during sessions is kept strictly confidential and will not be shared without your consent.
+              </Typography>
+              <Typography>
+                <b>Acceptance:</b> By booking a session, you acknowledge that you understand and agree to these terms.
+              </Typography>
+            </Box>
+          )}
+          {openModal === "About" && (
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <Typography sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}>
+                I’m Saranya, creator of <b>Saru in sync</b> and an <b>IT Business Consultant</b> by profession. 
+                Through my YouTube channel and podcast, I share real, raw, and practical advice. 
+                Many of you asked for personal guidance, so I started one-to-one sessions. 
+                My mission is simple — to help you gain clarity, direction, and confidence 
+                in your studies, career, mindset, and life.
+              </Typography>
+            </Box>
+          )}
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 }
@@ -457,7 +616,6 @@ export default function App() {
         <Hero />
         <WhatIDo />
         <How />
-        <Booking />
       </main>
       <Footer />
     </div>
