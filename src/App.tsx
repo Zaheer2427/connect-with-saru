@@ -25,7 +25,7 @@ import sessionImage from "./assets/session-logo.jpg";
 import MenuIcon from "@mui/icons-material/Menu";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 
 // ---------- Sections Info ----------
@@ -461,7 +461,6 @@ function How() {
   );
 }
 
-// ---------- Footer ----------
 function Footer() {
   const [openModal, setOpenModal] = useState<string | null>(null);
 
@@ -472,12 +471,23 @@ function Footer() {
     <Box
       sx={{
         py: 4,
-        textAlign: "center",
+        px: { xs: 2, md: 6 },
+        textAlign: "left",
         color: "#fff",
-        background: "rgba(0, 31, 63, 0.95)",
+        background: "rgba(0, 31, 63, 0.95)"
       }}
     >
       <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          alignItems: { xs: "center", md: "center" },
+          gap: { xs: 3, md: 6 },
+          justifyContent: "center"
+        }}
+      >
+        {/* Image */}
+        <Box
           component="img"
           src={sessionImage}
           alt="session"
@@ -490,114 +500,106 @@ function Footer() {
           }}
         />
 
-      {/* Links */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          gap: 3,
-          mb: 2,
-        }}
-      >
-        {["FAQs", "Terms", "About"].map((link) => (
-          <Button
-            key={link}
-            sx={{
-              color: "#fff",
-              fontSize: { xs: "0.8rem", md: "0.9rem" },
-              textTransform: "none",
-            }}
-            onClick={() => handleOpen(link)}
-          >
-            {link}
-          </Button>
-        ))}
-      </Box>
+        {/* Links and Socials */}
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          {/* Links */}
+          <Box sx={{ display: "flex", gap: 2 }}>
+            {["FAQs", "Terms", "About"].map((link) => (
+              <Button
+                key={link}
+                sx={{
+                  color: "#fff",
+                  fontSize: { xs: "0.8rem", md: "0.9rem" },
+                  textTransform: "none",
+                }}
+                onClick={() => handleOpen(link)}
+              >
+                {link}
+              </Button>
+            ))}
+          </Box>
 
-      {/* Social Icons */}
-      <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 2 }}>
-        <IconButton
-          href="https://www.instagram.com/saru_insync/"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ color: "#fff" }}
-        >
-          <InstagramIcon />
-        </IconButton>
-        <IconButton
-          href="https://www.youtube.com/@SaruInSync"
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ color: "#fff" }}
-        >
-          <YouTubeIcon />
-        </IconButton>
+          {/* Social Icons */}
+          <Box sx={{ display: "flex", gap: 1.5, justifyContent: "center" }}>
+            <IconButton
+              href="https://www.instagram.com/saru_insync/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: "#fff" }}
+            >
+              <InstagramIcon sx={{ fontSize: 32 }} /> {/* increased size */}
+            </IconButton>
+            <IconButton
+              href="https://www.youtube.com/@SaruInSync"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: "#fff" }}
+            >
+              <YouTubeIcon sx={{ fontSize: 32 }} />
+            </IconButton>
+            <IconButton
+              href="https://www.linkedin.com/in/saranya-606374260/"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: "#fff" }}
+            >
+              <LinkedInIcon sx={{ fontSize: 32 }} />
+            </IconButton>
+          </Box>
+
+        </Box>
       </Box>
 
       {/* Copyright */}
-      <Typography variant="body2" sx={{ fontSize: { xs: "0.75rem", md: "0.9rem" } }}>
+      <Typography
+        variant="body2"
+        sx={{
+          fontSize: { xs: "0.75rem", md: "0.9rem" },
+          mt: 4,
+          textAlign: "center",
+        }}
+      >
         © {new Date().getFullYear()} Sync Guidance · Online guidance · Contact:{" "}
         <a href="mailto:saruinsync.connect@gmail.com" style={{ color: "inherit" }}>
           saruinsync.connect@gmail.com
         </a>
       </Typography>
 
-      {/* Modal Dialog */}
+      {/* Modal Dialog (keep as is) */}
       <Dialog open={Boolean(openModal)} onClose={handleClose} maxWidth="sm" fullWidth>
         <DialogTitle>{openModal}</DialogTitle>
         <DialogContent dividers>
           {openModal === "FAQs" && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <Typography>
-                <b>What if I don’t know what to ask?</b><br />
-                👉 That’s okay! We’ll figure it out together.
+                <b>What if I don’t know what to ask?</b><br />👉 That’s okay! We’ll figure it out together.
               </Typography>
               <Typography>
-                <b>How long is a session?</b><br />
-                👉 Around 25–30 minutes.
+                <b>How long is a session?</b><br />👉 Around 25–30 minutes.
               </Typography>
               <Typography>
-                <b>Will this really help me?</b><br />
-                👉 Yes, if you’re ready for honest and practical advice.
+                <b>Will this really help me?</b><br />👉 Yes, if you’re ready for honest and practical advice.
               </Typography>
               <Typography>
-                <b>Who are these sessions for?</b><br />
-                👉 Anyone feeling stuck in studies, career, mindset, or life direction, and looking for practical, honest guidance.
+                <b>Who are these sessions for?</b><br />👉 Anyone feeling stuck in studies, career, mindset, or life direction.
               </Typography>
             </Box>
           )}
-
           {openModal === "Terms" && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-              <Typography>
-                <b>Purpose:</b> Sessions are intended for guidance, motivation, clarity, and personal growth only. They do not provide medical, therapy, or psychiatric treatment.
-              </Typography>
-              <Typography>
-                <b>Professional Advice:</b> If you are facing serious mental health issues, please consult a qualified healthcare professional.
-              </Typography>
-              <Typography>
-                <b>Payments:</b> Full payment is required at the time of booking. Refunds are not provided after the session.
-              </Typography>
-              <Typography>
-                <b>Cancellations / Rescheduling:</b> Sessions can be rescheduled at least 24 hours in advance. Late cancellations may not be refunded.
-              </Typography>
-              <Typography>
-                <b>Confidentiality:</b> All information shared during sessions is kept strictly confidential and will not be shared without your consent.
-              </Typography>
-              <Typography>
-                <b>Acceptance:</b> By booking a session, you acknowledge that you understand and agree to these terms.
-              </Typography>
+              <Typography><b>Purpose:</b> Sessions are intended for guidance, motivation, clarity, and personal growth only.</Typography>
+              <Typography><b>Professional Advice:</b> If you are facing serious mental health issues, please consult a qualified healthcare professional.</Typography>
+              <Typography><b>Payments:</b> Full payment is required at the time of booking. Refunds are not provided after the session.</Typography>
+              <Typography><b>Cancellations / Rescheduling:</b> Sessions can be rescheduled at least 24 hours in advance. Late cancellations may not be refunded.</Typography>
+              <Typography><b>Confidentiality:</b> All information shared during sessions is kept strictly confidential.</Typography>
+              <Typography><b>Acceptance:</b> By booking a session, you acknowledge that you understand and agree to these terms.</Typography>
             </Box>
           )}
           {openModal === "About" && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <Typography sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}>
                 I’m Saranya, creator of <b>Saru in sync</b> and an <b>IT Business Consultant</b> by profession. 
-                Through my YouTube channel and podcast, I share real, raw, and practical advice. 
-                Many of you asked for personal guidance, so I started one-to-one sessions. 
-                My mission is simple — to help you gain clarity, direction, and confidence 
-                in your studies, career, mindset, and life.
+                Through my YouTube channel and podcast, I share real, raw, and practical advice.
               </Typography>
             </Box>
           )}
