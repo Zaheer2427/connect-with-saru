@@ -9,11 +9,6 @@ import {
   Card,
   CardContent,
   IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -43,7 +38,6 @@ const sections = [
 // ---------- Navbar ----------
 function Navbar() {
   const [active, setActive] = useState("home");
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleScroll = () => {
     const scrollPos = window.scrollY + window.innerHeight / 3;
@@ -60,7 +54,6 @@ function Navbar() {
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMobileOpen(false);
   };
 
   return (
@@ -121,39 +114,6 @@ function Navbar() {
           </Box>
         </Toolbar>
       </AppBar>
-
-      <Drawer
-        anchor="left"
-        open={mobileOpen}
-        onClose={() => setMobileOpen(false)}
-        PaperProps={{
-          sx: {
-            background: "#EFEBEA",
-            color: "#011845",
-          },
-        }}
-      >
-        <Box sx={{ width: 220 }} role="presentation">
-          <List>
-            {sections.map((sec) => (
-              <ListItem key={sec.id} disablePadding>
-                <ListItemButton
-                  onClick={() => {
-                    scrollTo(sec.id);
-                    setMobileOpen(false);
-                  }}
-                  sx={{
-                    borderRight: active === sec.id ? "2px solid #011845" : "none",
-                    color: "inherit",
-                  }}
-                >
-                  <ListItemText primary={sec.label} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Drawer>
     </>
   );
 }
@@ -164,10 +124,9 @@ function Hero() {
     <Box
       id="home"
       sx={{
-        minHeight: "100vh",
         display: "flex",
+        mt: { xs: 4, md: 6 },
         alignItems: "center",
-        background: "#EFEBEA",
       }}
     >
       <Container>
@@ -285,27 +244,14 @@ function Hero() {
 }
 
 // ---------- Section Wrapper ----------
-function Section({
-  id,
-  title,
-  children,
-}: {
-  id: string;
-  title: string;
-  children: React.ReactNode;
-}) {
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <Box
       id={id}
       sx={{
-        minHeight: { xs: "70vh", md: "80vh" }, 
-        py: { xs: 1, md: 4 },
-        px: { xs: 1, md: 4 },
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        py: { xs: 4, md: 6 },   // consistent vertical padding
+        px: { xs: 2, md: 4 },
         textAlign: "center",
-        background: "#EFEBEA",
         color: "#011845",
       }}
     >
@@ -318,8 +264,7 @@ function Section({
           <Typography
             variant="h3"
             sx={{
-              mb: 3,
-              mt: 4,
+              mb: { xs: 3, md: 5 },
               fontSize: { xs: "2rem", md: "3.5rem" },
               fontFamily: "'DM Serif Display', serif",
               color: "#011845",
@@ -363,7 +308,7 @@ function WhatIDo() {
         >
           <Box
             component="img"
-            src={saruImage2}
+            src={saruImage1}
             alt="session"
             sx={{
               width: { xs: 200, sm: 220, md: 400 },
@@ -493,7 +438,7 @@ function WhatIDo() {
         >
           <Box
             component="img"
-            src={saruImage1}
+            src={saruImage2}
             alt="session"
             sx={{
               width: { xs: 200, sm: 220, md: 400 },
@@ -720,9 +665,9 @@ function Footer() {
               <Typography>
                 <b>Will this really help me?</b><br />👉 Yes, if you’re ready for honest and practical advice.
               </Typography>
-              <Typography>
+              {/* <Typography>
                 <b>How many sessions do I need?</b><br />👉 Some people find clarity in just one session, while others prefer a series of sessions for continued support. It depends on your situation - you’re free to decide after your first experience.
-              </Typography>
+              </Typography> */}
             </Box>
           )}
           {openModal === "Terms" && (
@@ -752,7 +697,7 @@ function Footer() {
 // ---------- App ----------
 export default function App() {
   return (
-    <div>
+    <div style={{background: "#EFEBEA"}}>
       <Navbar />
       <main>
         <Hero />
