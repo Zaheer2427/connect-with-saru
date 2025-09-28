@@ -21,8 +21,13 @@ import {
 import { motion } from "framer-motion";
 import saruInSyncLogo from "./assets/saru-in-sync-name-logo.png";
 import saruImage from "./assets/Saru.jpg";
+import saruImage1 from "./assets/saru1.jpg";
+import saruImage2 from "./assets/saru2.jpg";
 import sessionImage from "./assets/session-logo.jpg";
-import MenuIcon from "@mui/icons-material/Menu";
+import educationImage from "./assets/education.jpg";
+import careerImage from "./assets/career.jpeg";
+import motivationImage from "./assets/motivation.jpg";
+import personalDevelopment from "./assets/personalDevelopment.jpg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -70,9 +75,9 @@ function Navbar() {
       >
         <Toolbar
           sx={{
-            justifyContent: "space-between",
+            justifyContent: { xs: "center", md: "space-between" }, // center on mobile, space-between on desktop
             px: { xs: 3, md: 8 }, // more horizontal padding
-            minHeight: { xs: 80, md: 100 }, // increase height for all viewports
+            minHeight: { xs: 70, md: 90 }, // increase height for all viewports
           }}
         >
           {/* Desktop nav */}
@@ -96,15 +101,6 @@ function Navbar() {
             ))}
           </Box>
 
-          {/* Mobile nav */}
-          <IconButton
-            color="inherit"
-            sx={{ display: { md: "none" }, color: "#ffffffff" }}
-            onClick={() => setMobileOpen(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-
           {/* Logo */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <a
@@ -123,7 +119,6 @@ function Navbar() {
               />
             </a>
           </Box>
-
         </Toolbar>
       </AppBar>
 
@@ -201,7 +196,7 @@ function Hero() {
             sx={{
               fontSize: { xs: "1.5rem", md: "2.5rem" },
               fontFamily: "'DM Serif Display', serif",
-              color: "#011845",
+              color: "#f45700" ,
               fontWeight: 900,
             }}
           >
@@ -217,7 +212,7 @@ function Hero() {
               color: "#011845",
             }}
           >
-            From studies and career to mindset, motivation, and self-growth —
+            From studies and career to mindset, motivation, and self growth -
             I help you get clarity and confidence in life.
           </Typography>
 
@@ -229,8 +224,8 @@ function Hero() {
               py: 1.5,
               fontWeight: 700,
               fontSize: { xs: "1rem", md: "1.1rem" },
-              background: "#f45700",
-              borderRadius: "12px",
+              background: "#011845",
+              borderRadius: 8,
               color: "#fff",
               textTransform: "none",
               width: { xs: "100%", sm: "auto" }, // full width on mobile
@@ -239,7 +234,7 @@ function Hero() {
               document.getElementById("how")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            Book your session now — First 25 Get 25% Off!
+            Book your session now - First 25 Get 25% Off!
           </Button>
 
           {/* About Section */}
@@ -254,29 +249,33 @@ function Hero() {
               textAlign: { xs: "center", md: "left" },
             }}
           >
-          <Box
-            component="img"
-            src={saruImage}
-            alt="Saru"
-            sx={{
-              width: { xs: 180, sm: 220, md: 350 },
-              height: { xs: 180, sm: 220, md: 350 },
-              borderRadius: "50%",
-              objectFit: "cover",
-              boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-            }}
-          />
-
+            <Box
+              component="img"
+              src={saruImage}
+              alt="Saru"
+              sx={{
+                width: { xs: 200, sm: 220, md: 500 },
+                height: { xs: 200, sm: 220, md: 500 },
+                borderRadius: "50%",
+                objectFit: "cover",
+                boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+              }}
+            />
             <Typography
               variant="h6"
               sx={{
                 fontWeight: 500,
                 fontSize: { xs: "0.95rem", md: "1.2rem" },
                 color: "#011845",
+                background: "#fac9acff",
+                padding: "12px 16px",
+                borderTopLeftRadius: "20px",
+                borderTopRightRadius: "20px",
+                borderBottomRightRadius: "20px",
                 maxWidth: "600px",
               }}
             >
-              I’m Saranya, creator of <b>Saru in sync</b> and an <b>IT Business Consultant</b> by profession. Through my YouTube channel and podcast, I share real, raw, and practical advice. Many of you asked for personal guidance, so I started one-to-one sessions. My mission is simple — to help you gain clarity, direction, and confidence in your studies, career, mindset, and life.
+              I’m Saranya, creator of <b>Saru in sync</b> and an <b>IT Software Engineer</b> by profession. Through my YouTube channel and podcast, I share real, raw, and practical advice. Many of you asked for personal guidance, so I started one-to-one sessions. My mission is simple - to help you gain clarity, direction, and confidence in your studies, career, mindset, and life.
             </Typography>
           </Box>
         </motion.div>
@@ -299,9 +298,9 @@ function Section({
     <Box
       id={id}
       sx={{
-        minHeight: "100vh",
-        py: { xs: 6, md: 10 },
-        px: { xs: 2, md: 6 },
+        minHeight: { xs: "70vh", md: "80vh" }, 
+        py: { xs: 1, md: 4 },
+        px: { xs: 1, md: 4 },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -318,11 +317,12 @@ function Section({
         >
           <Typography
             variant="h3"
-            gutterBottom
             sx={{
-              mb: 4,
+              mb: 3,
+              mt: 4,
+              fontSize: { xs: "2rem", md: "3.5rem" },
               fontFamily: "'DM Serif Display', serif",
-              fontSize: { xs: "2rem", md: "2.5rem" },
+              color: "#011845",
               fontWeight: 900,
             }}
           >
@@ -334,14 +334,14 @@ function Section({
     </Box>
   );
 }
-
+  
 // ---------- What I Do ----------
 function WhatIDo() {
   const items = [
-    { title: "Educational Guidance", desc: "Study tips, time management, exam prep." },
-    { title: "Career Growth", desc: "Interview prep, resume advice, career switching." },
-    { title: "Mindset & Motivation", desc: "Confidence, focus, discipline." },
-    { title: "Self-Development", desc: "Habits, lifestyle, personal growth." },
+    { title: "Educational Guidance", desc: "Study tips, time management, exam prep.", img: educationImage },
+    { title: "Career Growth", desc: "Interview prep, resume advice, career switching.", img: careerImage },
+    { title: "Mindset & Motivation", desc: "Confidence, focus, discipline.", img: motivationImage },
+    { title: "Self-Development", desc: "Habits, lifestyle, personal growth.", img: personalDevelopment },
   ];
 
   return (
@@ -349,53 +349,167 @@ function WhatIDo() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(4, 1fr)" },
+          gridTemplateColumns: { xs: "1fr", md: "repeat(3, 1fr)" },
           gap: 3,
-          justifyItems: "center",
+          alignItems: "center",
         }}
       >
-        {items.map((i, index) => (
+        {/* First Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          style={{ gridColumn: "1 / 2", justifySelf: "center" }}
+        >
+          <Box
+            component="img"
+            src={saruImage2}
+            alt="session"
+            sx={{
+              width: { xs: 200, sm: 220, md: 400 },
+              height: { xs: 200, sm: 220, md: 400 },
+              borderRadius: "50%",
+              objectFit: "cover",
+              boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+            }}
+          />
+        </motion.div>
+
+        {/* First row cards */}
+        {items.slice(0, 2).map((i, index) => (
           <motion.div
             key={i.title}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 * index }}
-            style={{ width: "100%" }}
           >
             <Card
               elevation={6}
               sx={{
                 height: "100%",
-                minHeight: { xs: 180, md: 220 },
+                minHeight: { xs: 200, md: 220 },
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                bgcolor: "rgba(255,255,255,0.95)",
                 borderRadius: "16px",
+                backgroundImage: `url(${i.img})`,   // 👈 dynamic background image
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                position: "relative",
+                overflow: "hidden",
               }}
             >
-              <CardContent sx={{ textAlign: "center" }}>
+              {/* Overlay for readability */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  bgcolor: "rgba(255,255,255,0.7)", // white semi-transparent overlay
+                  zIndex: 1,
+                }}
+              />
+
+              <CardContent sx={{ textAlign: "center", position: "relative", zIndex: 2 }}>
                 <Typography
                   variant="h6"
                   fontWeight="bold"
                   gutterBottom
-                  sx={{ color: "#003366", fontSize: { xs: "1rem", md: "1.2rem" } }}
+                  sx={{ color: "#011845", fontSize: { xs: "2rem", md: "2rem" }, fontFamily: "'DM Serif Display', serif" }}
                 >
                   {i.title}
                 </Typography>
-                <Typography variant="body2" sx={{ color: "#333", fontSize: { xs: "0.85rem", md: "0.95rem" } }}>
+                <Typography
+                  variant="body1"
+                  fontWeight="bold"
+                  sx={{ color: "#f45700", fontSize: { xs: "1rem", md: "1.2rem" } }}
+                >
                   {i.desc}
                 </Typography>
               </CardContent>
             </Card>
           </motion.div>
         ))}
+
+        {/* Second row cards */}
+        {items.slice(2, 4).map((i, index) => (
+          <motion.div
+            key={i.title}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 * (index + 2) }}
+          >
+            <Card
+              elevation={6}
+              sx={{
+                height: "100%",
+                minHeight: { xs: 200, md: 220 },
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                borderRadius: "16px",
+                backgroundImage: `url(${i.img})`,   // 👈 dynamic background image
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              {/* Overlay for readability */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  bgcolor: "rgba(255,255,255,0.7)", // white semi-transparent overlay
+                  zIndex: 1,
+                }}
+              />
+
+              <CardContent sx={{ textAlign: "center", position: "relative", zIndex: 2 }}>
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  gutterBottom
+                  sx={{ color: "#011845", fontSize: { xs: "2rem", md: "2rem" }, fontFamily: "'DM Serif Display', serif" }}
+                >
+                  {i.title}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  fontWeight="bold"
+                  sx={{ color: "#f45700", fontSize: { xs: "1rem", md: "1.2rem" } }}
+                >
+                  {i.desc}
+                </Typography>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+
+        {/* Second Image */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <Box
+            component="img"
+            src={saruImage1}
+            alt="session"
+            sx={{
+              width: { xs: 200, sm: 220, md: 400 },
+              height: { xs: 200, sm: 220, md: 400 },
+              borderRadius: "50%",
+              objectFit: "cover",
+              boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+            }}
+          />
+        </motion.div>
       </Box>
     </Section>
   );
 }
 
-function How() {
+function HowItWorks() {
   return (
     <Section id="how" title="How It Works">
       {/* Bullet Points */}
@@ -423,13 +537,13 @@ function How() {
         gutterBottom
         sx={{
           mt: 4,
-          maxWidth: 600,
+          maxWidth: 500,
+          color: "#f45700",
           mx: "auto",
           fontSize: { xs: "1rem", md: "1.2rem" },
         }}
       >
-        Click the button below to open the booking form and complete payment via
-        UPI.
+        Click the button below to open the booking form and complete payment via UPI.
       </Typography>
       <Typography
         variant="h6"
@@ -440,15 +554,17 @@ function How() {
           color: "#011845",
         }}
       >
-        Book your session now — First 25 Get <span style={{ textDecoration: "line-through" }}>₹199</span> ₹149 (25% OFF)
+        Book your session now - First 25 Get <span style={{ textDecoration: "line-through" }}>₹199</span> ₹149 (25% OFF)
       </Typography>
       <Button
         variant="contained"
         size="large"
         sx={{
           mt: 2,
+          mb: { xs: 2.5 },
           background: "#f45700",
           textTransform: "none",
+          borderRadius: 8,
           width: { xs: "100%", sm: "auto" },
         }}
         href="https://forms.gle/Uorb2UQojku3ZaxS7"
@@ -470,7 +586,7 @@ function Footer() {
   return (
     <Box
       sx={{
-        py: 4,
+        py: 2,
         px: { xs: 2, md: 6 },
         textAlign: "left",
         color: "#fff",
@@ -492,8 +608,8 @@ function Footer() {
           src={sessionImage}
           alt="session"
           sx={{
-            width: { xs: 180, sm: 220, md: 200 },
-            height: { xs: 180, sm: 220, md: 200 },
+            width: { xs: 200, sm: 220, md: 150 },
+            height: { xs: 200, sm: 220, md: 150 },
             borderRadius: "50%",
             objectFit: "cover",
             boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
@@ -504,7 +620,23 @@ function Footer() {
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           {/* Links */}
           <Box sx={{ display: "flex", gap: 2 }}>
-            {["FAQs", "Terms", "About"].map((link) => (
+            {["FAQs", "Terms", "About", "Feedback"].map((link) => (
+              link === "Feedback" ? 
+              <Button
+                key={link}
+                component="a"
+                href="https://forms.gle/mfKj3A27DV2xmcCd6"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: "#fff",
+                  fontSize: { xs: "0.8rem", md: "0.9rem" },
+                  textTransform: "none",
+                }}
+              >
+                {link}
+              </Button>
+              :
               <Button
                 key={link}
                 sx={{
@@ -522,12 +654,12 @@ function Footer() {
           {/* Social Icons */}
           <Box sx={{ display: "flex", gap: 1.5, justifyContent: "center" }}>
             <IconButton
-              href="https://www.instagram.com/saru_insync/"
+              href="https://www.linkedin.com/in/saranya-606374260/"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: "#fff" }}
             >
-              <InstagramIcon sx={{ fontSize: 32 }} /> {/* increased size */}
+              <LinkedInIcon sx={{ fontSize: 32 }} />
             </IconButton>
             <IconButton
               href="https://www.youtube.com/@SaruInSync"
@@ -538,12 +670,12 @@ function Footer() {
               <YouTubeIcon sx={{ fontSize: 32 }} />
             </IconButton>
             <IconButton
-              href="https://www.linkedin.com/in/saranya-606374260/"
+              href="https://www.instagram.com/saru_insync/"
               target="_blank"
               rel="noopener noreferrer"
               sx={{ color: "#fff" }}
             >
-              <LinkedInIcon sx={{ fontSize: 32 }} />
+              <InstagramIcon sx={{ fontSize: 32 }} /> {/* increased size */}
             </IconButton>
           </Box>
 
@@ -552,14 +684,14 @@ function Footer() {
 
       {/* Copyright */}
       <Typography
-        variant="body2"
+        variant="body1"
         sx={{
           fontSize: { xs: "0.75rem", md: "0.9rem" },
           mt: 4,
           textAlign: "center",
         }}
       >
-        © {new Date().getFullYear()} Sync Guidance · Online guidance · Contact:{" "}
+        © {new Date().getFullYear()} Connect with saru · Online guidance · Contact:{" "}
         <a href="mailto:saruinsync.connect@gmail.com" style={{ color: "inherit" }}>
           saruinsync.connect@gmail.com
         </a>
@@ -572,7 +704,7 @@ function Footer() {
           {openModal === "FAQs" && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <Typography>
-                <b>What if I don’t know what to ask?</b><br />👉 That’s okay! We’ll figure it out together.
+                <b>What can I expect from a session?</b><br />👉 A one-to-one conversation focused on your challenges, giving you clarity and practical next steps.
               </Typography>
               <Typography>
                 <b>How long is a session?</b><br />👉 Around 25–30 minutes.
@@ -581,7 +713,7 @@ function Footer() {
                 <b>Will this really help me?</b><br />👉 Yes, if you’re ready for honest and practical advice.
               </Typography>
               <Typography>
-                <b>Who are these sessions for?</b><br />👉 Anyone feeling stuck in studies, career, mindset, or life direction.
+                <b>How many sessions do I need?</b><br />👉 Some people find clarity in just one session, while others prefer a series of sessions for continued support. It depends on your situation - you’re free to decide after your first experience.
               </Typography>
             </Box>
           )}
@@ -598,7 +730,7 @@ function Footer() {
           {openModal === "About" && (
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               <Typography sx={{ fontSize: { xs: "1rem", md: "1.2rem" } }}>
-                I’m Saranya, creator of <b>Saru in sync</b> and an <b>IT Business Consultant</b> by profession. 
+                I’m Saranya, creator of <b>Saru in sync</b> and an <b>IT Software Engineer</b> by profession. 
                 Through my YouTube channel and podcast, I share real, raw, and practical advice.
               </Typography>
             </Box>
@@ -617,7 +749,7 @@ export default function App() {
       <main>
         <Hero />
         <WhatIDo />
-        <How />
+        <HowItWorks />
       </main>
       <Footer />
     </div>
