@@ -31,7 +31,7 @@ import personalDevelopment from "./assets/personalDevelopment.jpg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
+import PodcastsIcon from '@mui/icons-material/Podcasts';
 
 // ---------- Sections Info ----------
 const sections = [
@@ -653,6 +653,14 @@ function Footer() {
 
           {/* Social Icons */}
           <Box sx={{ display: "flex", gap: 1.5, justifyContent: "center" }}>
+            <IconButton
+              href="https://open.spotify.com/show/2PVSJSbp7uAlWhrKmHL2LJ?si=88b144a0054343f0"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{ color: "#fff" }}
+            >
+              <PodcastsIcon sx={{ fontSize: 32 }} /> {/* increased size */}
+            </IconButton>
             <IconButton
               href="https://www.linkedin.com/in/saranya-606374260/"
               target="_blank"
