@@ -15,9 +15,9 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import saruInSyncLogo from "./assets/saru-in-sync-name-logo.png";
-import saruImage from "./assets/Saru.jpg";
-import saruImage1 from "./assets/saru1.jpg";
-import saruImage2 from "./assets/saru2.jpg";
+import saruImage2 from "./assets/Saru.jpg";
+import saruImage from "./assets/saru1.jpg";
+import saruImage1 from "./assets/saru2.jpg";
 import sessionImage from "./assets/session-logo.jpg";
 import educationImage from "./assets/education.jpg";
 import careerImage from "./assets/career.jpeg";
@@ -193,7 +193,7 @@ function Hero() {
               document.getElementById("how")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            Book your session now - First 25 Get 25% Off!
+            Book Your Session Now – Just ₹99 (Launch Price)
           </Button>
 
           {/* About Section */}
@@ -249,7 +249,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
     <Box
       id={id}
       sx={{
-        py: { xs: 4, md: 6 },   // consistent vertical padding
+        py: { xs: 2, md: 4 },   // consistent vertical padding
         px: { xs: 2, md: 4 },
         textAlign: "center",
         color: "#011845",
@@ -349,7 +349,7 @@ function WhatIDo() {
                 sx={{
                   position: "absolute",
                   inset: 0,
-                  bgcolor: "rgba(255,255,255,0.7)", // white semi-transparent overlay
+                  bgcolor: "rgba(0,0,0,0.7)", // white semi-transparent overlay
                   zIndex: 1,
                 }}
               />
@@ -359,14 +359,14 @@ function WhatIDo() {
                   variant="h6"
                   fontWeight="bold"
                   gutterBottom
-                  sx={{ color: "#011845", fontSize: { xs: "2rem", md: "2rem" }, fontFamily: "'DM Serif Display', serif" }}
+                  sx={{ color: "#ffffffff", fontSize: { xs: "2rem", md: "2rem" }, fontFamily: "'DM Serif Display', serif" }}
                 >
                   {i.title}
                 </Typography>
                 <Typography
                   variant="body1"
                   fontWeight="bold"
-                  sx={{ color: "#f45700", fontSize: { xs: "1rem", md: "1.2rem" } }}
+                  sx={{ color: "#ffffffff", fontSize: { xs: "1rem", md: "1.2rem" } }}
                 >
                   {i.desc}
                 </Typography>
@@ -404,7 +404,7 @@ function WhatIDo() {
                 sx={{
                   position: "absolute",
                   inset: 0,
-                  bgcolor: "rgba(255,255,255,0.7)", // white semi-transparent overlay
+                  bgcolor: "rgba(0,0,0,0.7)", // white semi-transparent overlay
                   zIndex: 1,
                 }}
               />
@@ -414,14 +414,14 @@ function WhatIDo() {
                   variant="h6"
                   fontWeight="bold"
                   gutterBottom
-                  sx={{ color: "#011845", fontSize: { xs: "2rem", md: "2rem" }, fontFamily: "'DM Serif Display', serif" }}
+                  sx={{ color: "#ffffffff", fontSize: { xs: "2rem", md: "2rem" }, fontFamily: "'DM Serif Display', serif" }}
                 >
                   {i.title}
                 </Typography>
                 <Typography
                   variant="body1"
                   fontWeight="bold"
-                  sx={{ color: "#f45700", fontSize: { xs: "1rem", md: "1.2rem" } }}
+                  sx={{ color: "#ffffffff", fontSize: { xs: "1rem", md: "1.2rem" } }}
                 >
                   {i.desc}
                 </Typography>
@@ -499,7 +499,7 @@ function HowItWorks() {
           color: "#011845",
         }}
       >
-        Book your session now - First 25 Get <span style={{ textDecoration: "line-through" }}>₹199</span> ₹149 (25% OFF)
+        Book Now & Unlock Clarity – ₹99 Launch Offer
       </Typography>
       <Button
         variant="contained"
