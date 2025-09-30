@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f6f6f6;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .header {
+        background: #011845;
+        color: #ffffff;
+        padding: 20px;
+      }
+      .failed {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ff2626;
+        margin-bottom: 15px;
+      }
+      .content {
+        padding: 20px;
+        text-align: center;
+        color: #011845;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+      .footer {
+        background: #eeeeee;
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+        color: #011845;
+      }
+      .button {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 12px 24px;
+        background: #011845;
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+      }
+      @media only screen and (max-width: 600px) {
+        .container {
+          border-radius: 0;
+        }
+        .header-table {
+          width: 100% !important;
+          text-align: center;
+        }
+        .header-table td {
+          display: block;
+          text-align: center !important;
+        }
+        .header-table img {
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <table class="header-table" width="100%" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" style="font-size:20px; font-weight:bold; color:#ffffff;">
+              Connect With Saru
+            </td>
+            <td align="right">
+              <img src="https://connect-with-saru.vercel.app/session-logo.jpg" alt="Logo" width="50" height="50" style="border-radius:50%; display:block;" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Body -->
+      <div class="content">
+        <p><strong>Payment Incomplete</strong></p>
+        <p class="failed">We noticed that your session booking could not be completed because the payment was not processed successfully.</p>
+
+        <p>No worries - you can try booking again using the button below:</p>
+
+        <!-- Booking Button -->
+        <p style="text-align:center;">
+          <a href="https://forms.gle/G1sQtzRE3yQMFnDw6" class="button">🔗 Book Again</a>
+        </p>
+
+        <!-- Plain text fallback -->
+        <p>If the button above doesn’t work, copy & paste this link into your browser:<br />
+        <a href="https://forms.gle/G1sQtzRE3yQMFnDw6">https://forms.gle/G1sQtzRE3yQMFnDw6</a></p>
+
+        <p><strong>Please note:</strong> Your session will only be confirmed once the payment is received.</p>
+
+        <p>If you face any issues during the process, just reply to this email and I’ll be happy to assist you.</p>
+
+        <p>Looking forward to connecting with you once everything is set!</p>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        © 2025 Connect with saru · Online guidance
+      </div>
+    </div>
+  </body>
+</html>
