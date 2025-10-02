@@ -193,7 +193,7 @@ function Hero() {
               document.getElementById("how")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            Book Your Session Now – Just ₹99 (Launch Price)
+            Book Your Session Now – Just ₹149
           </Button>
 
           {/* About Section */}
@@ -499,7 +499,7 @@ function HowItWorks() {
           color: "#011845",
         }}
       >
-        Book Now & Unlock Clarity – ₹99 Launch Offer
+        Book Now & Unlock Clarity – ₹149
       </Typography>
       <Button
         variant="contained"
