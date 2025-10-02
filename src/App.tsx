@@ -675,7 +675,7 @@ function Footer() {
               <Typography><b>Purpose:</b> Sessions are intended for guidance, motivation, clarity, and personal growth only.</Typography>
               <Typography><b>Professional Advice:</b> If you are facing serious mental health issues, please consult a qualified healthcare professional.</Typography>
               <Typography><b>Payments:</b> Full payment is required at the time of booking. Refunds are not provided after the session.</Typography>
-              <Typography><b>Cancellations / Rescheduling:</b> Sessions can be rescheduled at least 24 hours in advance. Late cancellations may not be refunded.</Typography>
+              <Typography><b>Cancellations / Rescheduling:</b> Sessions can be rescheduled at least 5 hours in advance. Late cancellations may not be refunded.</Typography>
               <Typography><b>Confidentiality:</b> All information shared during sessions is kept strictly confidential.</Typography>
               <Typography><b>Acceptance:</b> By booking a session, you acknowledge that you understand and agree to these terms.</Typography>
             </Box>
